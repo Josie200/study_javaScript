@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      const person1 = new Person("Josie", 25);
+      const person2 = new Person("John", 30);
+
+      console.log(person1.name); // Josie
+      //快速创建多个对象
+      //约定：命名以大写开头，只能由“new”开始
+      //new关键字调用的函数被称为实例化
+      //不需要return，构造函数自动返回创建的新对象
+      //创建结构相同但值不同的对象
+      //构造函数创建的实例对象彼此独立互不影响
+
+      //实例成员
+      //不会影响对象内的属性
+      person1.name = "abc"; //实例属性
+      person1.fun = () => {
+        console.log("abc"); //实例方法
+      };
+
+      //静态成员
+      Person.gender = "girl"; //静态属性
+      console.log(Person.gender); //girl
+      Person.sayHello = function () {
+        console.log("hello");
+      }; //静态方法
+      //静态方法不能使用箭头函数，因为箭头函数没有this指向
+    </script>
+  </body>
+</html>

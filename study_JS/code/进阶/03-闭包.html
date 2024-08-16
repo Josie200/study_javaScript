@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 闭包的作用：封闭数据，提供操作，外部也可以访问函数内部的变量 -->
+
+    <!-- 闭包的基本格式 -->
+    <script>
+      function outer() {
+        let a = 1;
+        function inner() {
+          console.log(a);
+        }
+        return inner();
+      }
+      const fn = outer();
+      fn();
+
+      // 例子
+      // let i = 1;
+      // function add(){
+      //   i++;
+      //   console.log(i);
+      // }
+      //这样写会被其他方法调用并更改i，我们希望i只能内部使用，所以采用闭包形式
+
+      //实现数据私有
+      function add() {
+        let i = 1;
+        return function () {
+          i++;
+          console.log(i);
+        };
+      }
+      add()();
+      add()();
+      //但是由于add()()在全局中调用，所以i一直被调用，不会被垃圾回收站回收，这会导致内存泄漏。
+    </script>
+  </body>
+</html>

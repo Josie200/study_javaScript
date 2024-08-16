@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const o = { uname: "josie", age: 25 };
+
+      console.log(Object.keys(o)); // ['uname', 'age'] 获取所有的属性命
+      console.log(Object.values(o)); // ['josie', 25] 获取所有的属性值
+      console.log(Object.entries(o)); // [ ['uname', 'josie'], ['age', 25] ] 获取所有的属性名和值
+      console.log(Object.assign({ name: "li" }, o)); // { name: 'li', uname: 'josie', age: 25 } 合并对象
+      console.log({ name: "li", ...o }); // { name: 'li', uname: 'josie', age: 25 } 合并对象
+      console.log(Object.getOwnPropertyNames(o)); // ['uname', 'age'] 获取所有自身属性名
+      console.log(Object.getOwnPropertyDescriptor(o, "uname")); // { value: 'josie', writable: true, enumerable: true, configurable: true } 获取某个属性的描述符
+    </script>
+  </body>
+</html>

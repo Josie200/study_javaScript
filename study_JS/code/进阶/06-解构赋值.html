@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 数组解构 -->
+    <script>
+      //把数组里面的元素快速的批量的赋值给变量
+      const [a, b, c] = [10, 11, 12];
+      console.log(a, b, c); //10,11,12
+
+      const [e, f, ...g] = [1, 2, 3, 4, 5];
+      console.log(e, f, g); //1,2,[3,4,5]
+
+      //防止undefined，使用默认参数
+      const [h = 0, i = 0] = [3];
+      console.log(h, i); //3,0
+
+      //按需导入赋值
+      const [k, l, , n] = [1, 2, 3, 4];
+      log(k, l, n); //1,2,4
+
+      //用解构快速交换变量
+      let s = 1;
+      let j = 2;
+      [j, s] = [s, j];
+      console.log(j, s); //1,2
+
+      //多维数组解构
+      const [x, y, [z, w]] = [1, 2, [3, 4]];
+      console.log(x, y, z, w); //1,2,3,4
+    </script>
+
+    <!-- 对象解构 -->
+    <script>
+      const { name, age } = { name: "Josie", age: 24 };
+      console.log(name, age); //Josie,24
+
+      //解构可以改名
+      const { name: name2, age: age2 } = { name: "Josie", age: 24 };
+      console.log(name2, age2); //Josie,24
+    </script>
+
+    <!-- 解构数组中的对象 -->
+    <script>
+      const AA = [{ name: "11", age: 12 }];
+      const [{ name: name3, age: age3 }] = AA;
+      log(name3, age3); //11,12
+    </script>
+  </body>
+</html>

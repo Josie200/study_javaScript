@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 作用域 -->
+    <!-- 作用域分为：全局作用域和局部作用域 -->
+
+    <!-- 全局作用域 -->
+    <!-- 全局作用域是指在函数外部定义的变量和函数，在整个程序中都可以访问到：如<script>和.js文件 -->
+
+    <!-- 局部作用域 -->
+    <!-- 局部作用域分为：函数作用域和块作用域 -->
+
+    <script>
+      //  函数作用域内部被访问，外部无法直接访问
+      function getSum() {
+        const num = 10;
+        console.log(num); //可以拿到
+      }
+      console.log(num); //拿不到
+
+      // 块作用域，{}包裹的代码成为代码块，代码块内部生命的变量外部将【有可能】无法被访问
+      //1.let声明的变量会产生块作用域，var不会产生块作用域
+      //2.const声明的常量也会产生块作用域
+      // 不同代码块之间的变量无法相互访问
+      for (let i = 0; i < 10; i++) {
+        console.log(i); //可以拿到
+      }
+      console.log(i); //拿不到
+
+      for (var j = 0; j < 10; j++) {
+        console.log(j); //可以拿到
+      }
+      console.log(j); //可以拿到
+    </script>
+
+    <!-- 作用域链 -->
+    <!-- 作用域链本质上试底层的变量查找机制 -->
+    <!-- 嵌套关系的作用域串联起来形成了作用域链
+    相同作用域链中按照从小到大的规则查找变量
+    子作用域能访问父作用域，父作用域无法访问子作用域
+
+-->
+    <script>
+      let a = 1;
+      let b = 2;
+      function foo() {
+        let a = 2;
+        console.log(a); //a=2
+        console.log(b); //b=2
+      }
+      console.log(a); //b=1
+      console.log(b); //b=2
+    </script>
+  </body>
+</html>

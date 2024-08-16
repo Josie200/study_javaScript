@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(a);
+      var a = 10; //打印出来是undefined
+
+      //1.变量提升会把所有var声明的变量提升到当前作用域最前面
+      //2.只提升声明，不提升复制
+      //3.所以实际开发中推荐使用let/const，先声明再访问变量
+
+      fn(); //打印出来是2
+      function fn() {
+        const b = 2;
+        console.log(b);
+      }
+      //1.把所有函数声明提升到当前作用域的最前面
+      //2.之提升函数声明，不提升函数调用
+
+      fun(); //报错
+      var fun = function () {
+        console.log(3);
+      };
+      //函数表达式必须先声明和赋值，后调用 否则报错
+    </script>
+  </body>
+</html>

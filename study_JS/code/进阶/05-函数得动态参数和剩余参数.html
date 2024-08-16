@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //动态参数
+      function getSum() {
+        //arguments动态参数 只存在于函数里面
+        //arguments是伪数组
+        console.log(arguments); //[1, 2, 3, 4, 5]
+      }
+      getSum(1, 2, 3, 4, 5);
+
+      //剩余参数
+      function getSum2(a, b, ...arr) {
+        //至少有两个参数，剩下的是arr
+        //...arr是真数组
+        console.log(arr); //[3, 4, 5]
+      }
+      getSum2(1, 2, 3, 4, 5);
+
+      //箭头函数没有arguments，只能使用剩余参数
+    </script>
+  </body>
+</html>
