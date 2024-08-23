@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <p id="output"></p>
+    <button id="btn">点击</button>
+    <script>
+      //防抖
+      //单位时间内，频繁触发事件，只执行最后一次
+
+      function debounce(func, wait) {
+        let timeout;
+        return function () {
+          if (timeout) clearTimeout(timeout);
+          timeout = setTimeout(() => {
+            func.apply(this, arguments);
+          }, wait);
+        };
+      }
+
+      const input = document.querySelector("#input");
+      const output = document.querySelector("#output");
+
+      input.addEventListener(
+        "input",
+        debounce(() => {
+          output.textContent = input.value;
+        }, 300)
+      );
+
+      //节流
+      //单位时间内，频繁触发事件，只执行一次
+
+      function throttle(func, wait) {
+        let timeout;
+        return function () {
+          if (!timeout) {
+            timeout = setTimeout(() => {
+              timeout = null;
+              func.apply(this, arguments);
+            }, wait);
+          }
+        };
+      }
+
+      const btn = document.querySelector("#btn");
+      let count = 0;
+
+      btn.addEventListener(
+        "click",
+        throttle(() => {
+          count++;
+          output.textContent = count;
+        }, 1000)
+      );
+    </script>
+  </body>
+</html>

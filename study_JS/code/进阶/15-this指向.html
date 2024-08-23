@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>click me</button>
+    <script>
+      // <!-- 普通函数 -->
+      //谁调用我就指向谁，严格模式下指向undefined，非严格模式下指向window
+      console.log(this); //window
+      function fn() {
+        console.log(this); //window
+      }
+      window.fn();
+      window.setTimeout(function () {
+        console.log(this); //window
+      }, 500);
+
+      document.querySelector("button").addEventListener("click", function () {
+        console.log(this); //button
+      });
+
+      const obj = {
+        sa: function () {
+          console.log(this); //obj
+        },
+      };
+      obj.sa();
+
+      // <!-- 箭头函数 -->
+      //箭头函数没有this，它只会捕获其所在函数的this，所以箭头函数的this指向最近作用域的this
+
+      //改变this指向
+      //call apply bind
+      fn.call(obj); //改变fn的this指向到obj,如果需要传参，直接一次放入obj后面传入即可
+      fn.apply(obj, [1, 2, 3]); //改变fn的this指向到obj,如果需要传参，直接一次放入数组obj后面传入即可
+      const fnn = fn.bind(obj); //不会调用一个函数，返回一个新的函数，该函数的this指向obj
+      fnn();
+    </script>
+  </body>
+</html>

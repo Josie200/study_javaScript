@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const obj = {
+        a: 0,
+        b: {
+          c: 2,
+        },
+      };
+      //浅拷贝 遇到多层拷贝还是会只拷贝一层
+      const obj4 = { ...obj };
+      const obj2 = Object.assign({}, obj);
+      //深拷贝 可以使用递归或者lodash的cloneDeep方法
+
+      //递归
+      function deepClone(obj) {
+        if (typeof obj !== "object" || obj === null) {
+          return obj;
+        }
+        let newObj = Array.isArray(obj) ? [] : {};
+        for (let key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            newObj[key] = deepClone(obj[key]);
+          }
+        }
+        return newObj;
+      }
+      const obj5 = deepClone(obj);
+
+      const obj3 = JSON.parse(JSON.stringify(obj));
+    </script>
+  </body>
+</html>

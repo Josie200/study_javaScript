@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //对象都会有一个属性-proto-指向构造函数的prototype原型对象,之所以我们对象可以使用构造函数prototype原型对象的属性和方法,就是因为对象有-proto_原型的存在。
+      //   __proto__是JS非标准属性
+      //[[prototype]]和__proto__意义相同用来表明当前实例对象指向哪个原型对象prototype
+      //__proto__对象原型里面也有一个constructor属性,指向创建该实例对象的构造函数
+      function Person(name, age) {}
+      const person1 = new Person("张三", 20);
+
+      //__proto__指向构造函数的原型对象
+      console.log(person1.__proto__ === Person.prototype); //true
+      //对象原型里面有constructor指向构造函数Person
+      console.log(person1.__proto__.constructor === Person); //true
+    </script>
+  </body>
+</html>

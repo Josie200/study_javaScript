@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //在哪里?每个原型对象里面都有个constructor属性(constructor构造函数)型
+      // 作用:该属性指向该原型对象的构造函数
+      function Person(name, age) {
+        this.name = name;
+      }
+
+      console.dir(Person.prototype.constructor === Person); //true
+
+      Person.prototype = {
+        sing: function () {},
+        dance: function () {},
+      };
+
+      console.dir(Person.prototype.constructor === Person); //false
+
+      Person.prototype = {
+        //需要重新指回创造这个原型对象的构造函数
+        constructor: Person,
+        sing: function () {},
+        dance: function () {},
+      };
+
+      console.dir(Person.prototype.constructor === Person); //true
+      const P = new Person("Tom", 25);
+    </script>
+  </body>
+</html>

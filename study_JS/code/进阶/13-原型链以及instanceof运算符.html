@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //基于原型对象的继承使得不同构造函数的原型对象关联在一起,并且这种关联的关系是一种链状的结构,我们将原型对象的链状结构关系称为原型链
+      //原型链-查找规则
+      //当访问一个对象的属性（包括方法）时，首先查找这个对象自身有没有该属性。
+      //如果没有就查找它的原型（也就是_proto_指向的 prototype 原型对象）
+      //如果还没有就查找原型对象的原型（Object的原型对象）
+      //依此类推一直找到 Object 为止(null)
+      //_proto_对象原型的意义就在于为对象成员查找机制提供一个方向，或者说一条路线
+      //可以使用 instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上
+      console.log(Object.prototype.__proto__ === null); // true
+      function Person() {}
+      const person1 = new Person();
+      console.log(person1.__proto__ === Person.prototype); // true
+      console.log(Person.prototype.__proto__ === Object.prototype); // true 新规则改写成一下方法，__proto__已经被弃用
+      console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
+      console.log(person1.__proto__.__proto__ === Object.prototype); // true 新规则改写成一下方法，__proto__已经被弃用
+      console.log(
+        Object.getPrototypeOf(Object.getPrototypeOf(person1)) ===
+          Object.prototype
+      ); // true
+
+      //instanceof只要在原型链上的都是true，不管实例对象是否有构造函数的prototype属性
+
+      console.log(person1 instanceof Person); // true
+      console.log(person1 instanceof Object); // true
+      console.log(person1 instanceof Array); // false 数组的原型链上没有 Person.prototype
+      console.log(Array instanceof Object); // true
+    </script>
+  </body>
+</html>
