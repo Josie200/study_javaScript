@@ -22,3 +22,9 @@ react 组件分为类组件和函数组件
 1.Hooks 暂时还不能完全地为函数组件补齐类组件的能力
 2.“轻量”几乎是函数组件的基因这可能会使它不能够很好地消化“复杂”
 3.Hooks 在使用层面有着严格的规则约束
+
+**Hooks 的使用原则** 1.只在 React 函数中调用 Hooks 2.不要在循环、条件判断或者嵌套函数中调用 Hooks
+要确保 Hooks 再每次渲染时都保持同样的执行顺序
+
+React Hooks 的调用链路
+useState => 通过 resolveDispatcher 获取 dispatch => 调用 dispatcher.useState => 调用 updateState => 调用 updateReducer => 返回目标数组(如[state,useState])
