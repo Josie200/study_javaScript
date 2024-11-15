@@ -7,7 +7,7 @@
 在 redux 的整个工作过程中，数据流是严格单向的
 action -> reducer -> store -> view - action
 
-```javascript
+```jsx
 // 引入 redux
 import { createStore } from "redux";
 const reducer = (state, action) => {

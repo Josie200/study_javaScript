@@ -5,7 +5,7 @@ JSX 就是 React.createElement()的语法糖，它可以将 JSX 代码转换为 
 
 JS 代码：
 
-```javascript
+```jsx
 <ul className="list">
   <li key="2">1</li>
   <li key="2">2</li>
@@ -14,7 +14,7 @@ JS 代码：
 
 转换成 JSX 代码:
 
-```javascript
+```jsx
 React.createElement("ul",{
 //传入属性键值对
 className: "list"// 从第三个入参开始往后，传入的参数都是 children

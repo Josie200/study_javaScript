@@ -35,7 +35,7 @@ class Father extends React.Component {
 发布订阅机制
 监听事件的位置和触发事件的位置是不受限的
 
-```javascript
+```jsx
 class myEventEmitter {
   constructor() {
     //eventMap用来存储事件和监听函数之间的关系
